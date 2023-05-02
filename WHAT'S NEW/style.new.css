@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: Futura, Helvetica, Arial, sans-serif;
+  }
+  nav {
+    color: #e5dfd9;
+    padding: 10px;
+    background-color: #1b1b1b;
+    border: solid rgba(0, 0, 0, 0.15);
+    border-width: 1px 0;
+    box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+      inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 3;
+  }
+  
+  .header-nav {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+  }
+  .header-nav a {
+    text-decoration: none;
+    color: #e5dfd9;
+  }
+  .header-nav ul {
+    display: flex;
+    gap: 20px;
+  }
+  .header-nav li {
+    list-style: none;
+  }
+  .left {
+      font-size: 12px;
+  }
+  .right {
+      padding-right: 40px;
+      font-size: 12px;
+  }
+  .nav-product {
+      margin: 1% 0 ;
+  }
+
+  .b-example-divider {
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: solid rgba(0, 0, 0, 0.15);
+    border-width: 1px 0;
+    box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.2),
+      inset 0 0.125em 0.5em rgba(0, 0, 0, 0.3);
+  }
+  .container-product {
+    height: 30px;
+    width: 80% !important;
+    background-color: #1b1b1b;
+    margin: auto;
+    color: #e5dfd9;
+    font-size: 12px;
+  }
+  .row {
+      cursor: pointer;
+  }
+  /* thanh điều hướng */
+.row .col {
+  color: #e5dfd9;
+}
+.row .col:hover {
+  color: rgb(198, 224, 248);
+}
+  
+.mewin {
+    text-align: center;
+    padding-top: 70px;
+    font-size: 36px;
+    font-weight: 200;
+    font-style: normal;
+
+}
+.all {
+     text-align: center;
+    font-size: 36px;
+    font-weight: 200;
+    font-style: normal;
+    margin-bottom: 50px; 
+}
+  
+  .img-carousel {
+    width: 40%;
+    height: 57%;
+    margin: 0 auto;
+  }
+  .btn-img-discover {
+    background-color: #313131;
+    color: white;
+    padding: 8px;
+  
+    position: absolute;
+    z-index: 1;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  carousel-control-discover {
+    background-color: #1b1b1b;
+  }
+  .contact {
+    text-align: center;
+    background-color: #e7e7e7;
+  }
+  .contact p {
+    font-size: 36px;
+    font-weight: 200;
+    font-style: normal;
+  }
+  .contact button {
+    background-color: #313131;
+    color: white;
+    padding: 8px;
+  }
+  .contact-item {
+    padding: 40px 0;
+  }
+  .discover {
+    text-align: center;
+    background-color: #e7e7e7;
+    padding: 40px;
+   
+  }
+  .discover img {
+    width: 80%;
+  }
+  .discover p {
+    padding-top: 40px;
+    font-size: 36px;
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  ul li {
+    list-style-type: none;
+  }
+  a {
+    text-decoration: none !important;
+    
+    font-size: 12px !important;
+  }
+  .discover .more {
+    background-color: rgba(245, 245, 245, 0.5);
+    color: #1b1b1b;
+    width: 190px;
+    padding: 10px;
+    position: absolute;
+    top: 130px;
+    left: 665px;
+  }
+  .stories {
+    margin: 60px;
+    text-align: center;
+  }
+  .stories-p {
+    font-size: 40px;
+    font-weight: 200;
+    font-style: normal;
+  }
+  .footer-container {
+    background-color: #1b1b1b;
+    color: #e5dfd9;
+    display: flex;
+    justify-content: space-around;
+  }
+  .footer-container ul {
+    padding: 0;
+  }
+  .footer-services {
+    width: 200px;
+  }
+  .footer-signup {
+    width: 200px;
+  }
+  .footer-container {
+    padding: 30px;
+  }
+  

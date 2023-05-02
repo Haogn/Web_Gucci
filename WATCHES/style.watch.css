@@ -1,0 +1,310 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Futura, Helvetica, Arial, sans-serif;
+}
+nav {
+  color: #e5dfd9;
+  padding: 10px;
+  background-color: #1b1b1b;
+  border: solid rgba(0, 0, 0, 0.15);
+  border-width: 1px 0;
+  box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+    inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+
+.header-nav {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+.header-nav a {
+  text-decoration: none;
+  color: #e5dfd9;
+}
+.header-nav ul {
+  display: flex;
+  gap: 20px;
+}
+.header-nav li {
+  list-style: none;
+}
+.left {
+  font-size: 12px;
+}
+.right {
+  padding-right: 40px;
+  font-size: 12px;
+}
+.nav-product {
+  margin: 1% 0;
+}
+.container-product {
+  height: 30px;
+  width: 80% !important;
+  background-color: #1b1b1b;
+  margin: auto;
+  color: #e5dfd9;
+  font-size: 12px;
+}
+.row {
+  cursor: pointer;
+}
+
+/* thanh điều hướng */
+.row .col {
+  color: #e5dfd9;
+  text-decoration: none;
+}
+.row .col:hover {
+  color: rgb(198, 224, 248);
+}
+
+/* thanh ngăn cách  */
+.b-example-divider {
+  width: 100%;
+  height: 2.65rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: solid rgba(0, 0, 0, 0.15);
+  border-width: 1px 0;
+  box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+    inset 0 0.125em 0.5em rgba(0, 0, 0, 0.1);
+}
+.b-example-divider p {
+  padding-top: 10px;
+  padding-left: 20px;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 18px;
+}
+/* sản phẩm */
+.list-product {
+    margin-top: 20px;
+    margin-left: 30px;  
+}
+
+.item-product{
+    display: flex;
+    flex-wrap: wrap;
+    gap : 10px 2px; 
+}
+.img-product {
+  position: relative;
+  width:24.9%;
+  
+}
+.img-product i {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+  }
+
+.list-product .item-product .img-product img {
+    width: 90%;
+    transition: all 0.s ease-in-out;
+}
+.list-product .item-product .img-product:hover .carousel {
+    transform: scale(1.06);
+    display: block;
+    
+}
+.list-product .item-product .img-product:hover .img {
+    display: none;
+}
+
+/* modal thông tin sản phẩm */
+.information {
+  background-color: rgba(154, 151, 151, 0.2) !important;
+}
+.information h5 {
+  text-align: center;
+}
+.information img {
+  padding-left: 50px;
+  padding-top: 30px;
+}
+.information p {
+  font-weight: 350;
+  font-style: normal;
+  font-size: 16px; 
+}
+.like {
+  background-color: #1b1b1b !important;
+  border: #1b1b1b solid 1px !important;
+}
+.like:hover {
+  background-color :#c84747 !important;
+  color: #111 !important;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+}
+
+button {
+  --primary-color: #111;
+  --hovered-color: #c84747;
+  position: relative;
+  display: flex;
+  font-weight: 600;
+  font-size: 20px;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+button p {
+  margin: 0;
+  position: relative;
+  font-size: 20px;
+  color: var(--primary-color)
+}
+
+button::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  left: 0;
+  bottom: -7px;
+  background: var(--hovered-color);
+  height: 2px;
+  transition: 0.3s ease-out;
+}
+
+button p::before {
+  position: absolute;
+/*   box-sizing: border-box; */
+  content: "Subscribe";
+  width: 0%;
+  inset: 0;
+  color: var(--hovered-color);
+  overflow: hidden;
+  transition: 0.3s ease-out;
+}
+
+button:hover::after {
+  width: 100%;
+}
+
+button:hover p::before {
+  width: 100%;
+}
+
+button:hover svg {
+  transform: translateX(4px);
+  color: var(--hovered-color)
+}
+
+button svg {
+  color: var(--primary-color);
+  transition: 0.2s;
+  position: relative;
+  width: 15px;
+  transition-delay: 0.2s;
+}
+
+/* carousel */
+.carousel {
+    display: none;
+}
+.carousel p {
+    color: #1b1b1b;
+}
+
+ /* footer */
+footer {
+    margin-top: 20px;
+}
+.footer-container {
+    background-color: #1b1b1b;
+    color: #e5dfd9;
+    display: flex;
+    justify-content: space-around;
+  }
+  .footer-container ul {
+    padding: 0;
+  }
+  .footer-services {
+    width: 200px;
+  }
+  .footer-signup {
+    width: 200px;
+  }
+  .footer-container {
+    padding: 30px;
+  }
+  ul li {
+    list-style-type: none;
+  }
+
+  
+/* hover gucci */
+  .button {
+    display: flex;
+  }
+  
+  .box {
+    width: 35px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1b1b1b;
+    transition: all .8s;
+    cursor: pointer;
+    position: relative;
+    background: #dcdcdc;
+    overflow: hidden;
+    padding-left: 25px;
+    
+  }
+  
+  .box:before {
+    content: "G";
+    position: absolute;
+    top: 0;
+    background: #dcdcdc;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(100%);
+    transition: transform .4s;
+  }
+  
+  .box:nth-child(2)::before {
+    transform: translateY(-100%);
+    content: 'U';
+  }
+  
+  .box:nth-child(3)::before {
+    content: 'C';
+  }
+  
+  .box:nth-child(4)::before {
+    transform: translateY(-100%);
+    content: 'C';
+  }
+  
+  .box:nth-child(5)::before {
+    content: 'I';
+  }
+  
+  .button:hover .box:before {
+    transform: translateY(0);
+  }
+
+ 
+  
