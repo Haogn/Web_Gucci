@@ -11,180 +11,108 @@
 </head>
 <body>
     
-    <nav>
-        <div class="header-nav">
-            <ul class="left">
-                <li><i class="fa-sharp fa-solid fa-location-dot"></i> Canada</li>
-                <li>English <i class="fa-solid fa-heart"></i></li>
-                <li><i class="fa-solid fa-phone"></i> +1.877.482.2499</li>
-            </ul>
-            <a href="../HOME/index.html"><img src="./bb04fa4ae60639586017.png" alt=""></a>
-            <ul class="right">
-                <li> <a href="../SIGN-ĐĂNG NHẬP/index.html">Sign In</a></li>
-                <li data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop"><i class="fa-regular fa-heart"></i></li>
-                <li data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    <ion-icon name="bag"></ion-icon></i> Bag</li>
-                <li ><i class="fa-solid fa-magnifying-glass fa-xl"></i></li>
-            </ul>
-        </div>
-    
-        <!-- giỏ hàng Bag -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasRightLabel">Giỏ Hàng</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              giỏ hàng
-            </div>
-          </div>
-    
-          <!-- yêu thích --> 
-          <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="staticBackdropLabel">Sản phẩm ưu thích</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <div>
-              yêu thích sản phẩm.
-              </div>
-            </div>
-          </div>
+  <nav>
+    <div class="header-nav">
+        <ul class="left">
+            <li><i class="fa-sharp fa-solid fa-location-dot"></i> Canada</li>
+            <li>English <i class="fa-solid fa-heart"></i></li>
+            <li><i class="fa-solid fa-phone"></i> +1.877.482.2499</li>
+        </ul>
+        <a href="../ACCTIVEHOME/index.html"><img src="./bb04fa4ae60639586017.png" alt=""></a>
+        <ul class="right">
+          <li id="account"> <a href="../HISTORY/index.html"></a></li>
+          <li data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop"><i class="fa-regular fa-heart heart"></i></li>
+            
+            <a href="../TRANG THANH TOAN/index.html"><li><ion-icon class="bag" name="bag"></ion-icon></i> Bag</li></a>
 
-        <div class="nav-product">
-         <div class="container-product">
-          <div class="row">
-            <a href="../GITTS/index.html" class="col">GIFTS</a>
-            <a href="../WHAT'S NEW/index.html" class="col">WHAT'S NEW</a>
-            <a href="../HANDBAGS/index.html" class="col">HANDBAGS</a>
-            <a href="" class="col">TRAVEL</a>
-            <a href="../WOMEN/index.html" class="col">WOMEN</a>
-            <a href="../MEN/index.html" class="col">MEN</a>
-            <a href="../MX/index.html" class="col">MX</a>
-            <a href="../CHIDREN/index.html" class="col">CHIDREN</a>
-            <a href="../WATCHES/index.html" class="col">JEWELRY & WATCHES</a>
-            <a href="" class="col">DÉCOR & LIFESTYLE</a>
-            <a href="../BEAUTY/index.html" class="col">BEAUTY</a>
-            <a href="" class="col">VAULT</a>
-        </div>
+            <li id="log_out">
+              <a><i class="fa-solid fa-right-from-bracket"></i>Log out</a>
+            </li>
+            <!-- <li>
+                <div class="group">
+                  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+                  <input placeholder="Search" type="search" class="input">
+                </div>
+            </li> -->
+        </ul>
+        <div class="icon-product"><i class="fa-solid fa-list" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></i></div>
 
-         </div>
+    </div>
+
+
+
+      <!-- yêu thích -->
+       <div class="offcanvas offcanvas-start list_like" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="staticBackdropLabel">Sản phẩm yêu thích</h5>
+          <button  type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        
-    </nav>
+        <div class="offcanvas-body">
+          <div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Tên sản phẩm</th>
+                  <th class="img_like" scope="col">Hình ảnh</th>
+                  <th scope="col">Giá</th>
+                  <th scope="col">Đã bán</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody class="tbody" id="tbody">
+                <!-- <tr id="1">
+                    <th scope="row">1</th>
+                    <td>Gucci Blondie top handle bag</td>
+                    <td>img</td>
+                    <td><span>2565</span>$</td>
+                    <td> <span>0</span> </td>
+                    <td><button class="btn_dislike" >Dis Like</button></td>
+                </tr>
+               -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div> 
+
+    <div class="nav-product">
+     <div class="container-product">
+      <div class="row">
+        <a href="../GITTS/index.html" class="col">GIFTS</a>
+        <a href="../WHAT'S NEW/index.html" class="col">WHAT'S NEW</a>
+        <a href="../HANDBAGS/index.html" class="col">HANDBAGS</a>
+        <a href="" class="col">TRAVEL</a>
+        <a href="../WOMEN/index.html" class="col">WOMEN</a>
+        <a href="../MEN/index.html" class="col">MEN</a>
+        <a href="../MX/index.html" class="col">MX</a>
+        <a href="../CHIDREN/index.html" class="col">CHIDREN</a>
+        <a href="../WATCHES/index.html" class="col">JEWELRY & WATCHES</a>
+        <a href="" class="col">DÉCOR & LIFESTYLE</a>
+        <a href="../BEAUTY/index.html" class="col">BEAUTY</a>
+        <a href="" class="col">VAULT</a>
+    </div>
+
+     </div>
+    </div>
+</nav>
 <!-- nav -->
-    <div class="b-example-divider">
-        <!-- <p> HANDBAGS </p> -->
-        <div class="button">
-            <div class="box">G</div>
-            <div class="box">U</div>
-            <div class="box">C</div>
-            <div class="box">C</div>
-            <div class="box">I</div>
-            <p>HANDBAGS</p>
-        </div>
+<div class="b-example-divider">
+   <div class="button">
+        <div class="box">G</div>
+        <div class="box">U</div>
+        <div class="box">C</div>
+        <div class="box">C</div>
+        <div class="box">I</div>
+        <p>HANDBAGS</p>
     </div>
+</div>
 <!-- product -->
-    <div class="list-product " >
-        <div class="item-product" id="item-product">
-            <!-- <div class="img-product" id="1">
-                <div class="img">
-                    <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1680628128/744434_1IV0G_9022_001_054_0000_Light-Gucci-Blondie-top-handle-bag.jpg" alt="">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-                <div class="carousel">
-                    <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1680628170/744434_1IV0G_9022_002_054_0000_Light-Gucci-Blondie-top-handle-bag.jpg" alt="">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-            </div>
-            <div class="img-product">
-                <div class="img">
-                    <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1679679044/744434_1IV0G_7519_001_054_0000_Light-Gucci-Blondie-top-handle-bag.jpg" alt="">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-
-                <div class="carousel">
-                    <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1679077018/744434_1IV0G_7519_002_054_0000_Light-Gucci-Blondie-top-handle-bag.jpg" alt="">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-        
-            </div>
-            <div class="img-product">
-                <div class="img">
-                    <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1679679016/744434_1IV0G_1000_001_054_0000_Light-Gucci-Blondie-top-handle-bag.jpg" alt="">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-
-                <div class="carousel">
-                    <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1678992344/744434_1IV0G_1000_002_054_0000_Light-Gucci-Blondie-top-handle-bag.jpg" alt="">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-        
-            </div>
-            <div class="img-product">
-                <div class="img">
-                    <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1679679019/744434_1IV0G_2535_001_054_0000_Light-Gucci-Blondie-top-handle-bag.jpg" alt="">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-
-                <div class="carousel">
-                    <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1679118344/744434_1IV0G_2535_002_054_0000_Light-Gucci-Blondie-top-handle-bag.jpg" alt="">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-        
-            </div>
-            <div class="img-product">
-                <div class="img">
-                    <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1681748111/742360_1IV0G_9022_001_075_0000_Light-Gucci-Blondie-small-shoulder-bag.jpg" alt="">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-
-                <div class="carousel">
-                    <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1681748114/742360_1IV0G_9022_002_075_0000_Light-Gucci-Blondie-small-shoulder-bag.jpg" alt="">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-        
-            </div>
-            <div class="img-product">
-                <div class="img">
-                    <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1681754415/742360_1IV0G_7519_001_075_0026_Light-Gucci-Blondie-small-shoulder-bag.jpg" alt="">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-
-                <div class="carousel">
-                    <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1681754418/742360_1IV0G_7519_002_075_0026_Light-Gucci-Blondie-small-shoulder-bag.jpg" alt="">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-
-            </div>
-            <div class="img-product">
-                <div class="img">
-                    <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1677870178/742360_1IV0G_1000_001_075_0000_Light-Gucci-Blondie-small-shoulder-bag.jpg" alt="">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-
-                <div class="carousel">
-                    <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1677870183/742360_1IV0G_1000_002_075_0000_Light-Gucci-Blondie-small-shoulder-bag.jpg" alt="">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-
-            </div>
-            <div class="img-product">
-                <div class="img">
-                    <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1677203240/742360_1IV0G_2535_001_075_0028_Light-Gucci-Blondie-small-shoulder-bag.jpg" alt="">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-
-                <div class="carousel">
-                    <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1677203241/742360_1IV0G_2535_002_075_0028_Light-Gucci-Blondie-small-shoulder-bag.jpg" alt="">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-
-            </div>
-            </div> -->
-        </div>
-    </div>
+<div class="list-product " >
+<div class="item-product ">
+    <!-- nơi để sản phẩm -->
+</div>
+</div>
 <!-- footer -->
     <footer>
         <div class="footer-container">
@@ -243,6 +171,30 @@
           </div>
         </div>
       </footer>
+
+      
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasRightLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="row">
+            <a href="../GITTS/index.html" class="col">GIFTS</a>
+            <a href="../WHAT'S NEW/index.html" class="col">WHAT'S NEW</a>
+            <a href="../HANDBAGS/index.html" class="col">HANDBAGS</a>
+            <a href="" class="col">TRAVEL</a>
+            <a href="../WOMEN/index.html" class="col">WOMEN</a>
+            <a href="../MEN/index.html" class="col">MEN</a>
+            <a href="../MX/index.html" class="col">MX</a>
+            <a href="../CHIDREN/index.html" class="col">CHIDREN</a>
+            <a href="../WATCHES/index.html" class="col">JEWELRY & WATCHES</a>
+            <a href="" class="col">DÉCOR & LIFESTYLE</a>
+            <a href="../BEAUTY/index.html" class="col">BEAUTY</a>
+            <a href="" class="col">VAULT</a>
+          </div>
+        </div>
+      </div> 
 
     
 

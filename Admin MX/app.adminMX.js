@@ -1,28 +1,13 @@
-let admin = JSON.parse(localStorage.getItem("dataMen"));
+let admin = JSON.parse(localStorage.getItem("dataMX"));
 
 let nameCustom = JSON.parse(localStorage.getItem("listCustomers"));
 console.log(nameCustom);
 
 let account = document.querySelector("#account");
 
-let log_out = document.querySelector("#log_out");
-console.log("log out");
-log_out.onclick = function () {
-  console.log("log_out");
-  for (let i = 0; i < nameCustom.length; i++) {
-    nameCustom[i].status = false;
-  }
-  localStorage.setItem("listCustomers", JSON.stringify(nameCustom));
-  // console.log(nameCustom);
-  log_out.children[0].setAttribute("href", "../LOGIN/index.html");
-};
+account.innerHTML = `<a href="../HISTORY/index.html"><i class="fa-solid fa-user"></i> ${nameCustom[0].name}</a>`;
+console.log(account.innerHTML);
 
-for (let i = 0; i < nameCustom.length; i++) {
-  if (nameCustom[i].status === true) {
-    account.innerHTML = `<a href="../HISTORY/index.html"><i class="fa-solid fa-user"></i> ${nameCustom[i].name}</a>`;
-    console.log(account.innerHTML);
-  }
-}
 
 // console.log(admin);
 let tbody = document.querySelector("#tbody");
@@ -44,12 +29,8 @@ function renderoder() {
                 <td><span>${admin[i].price}</span>$</td>
                 <td> ${admin[i].quantity} </td>
                 <td>
-                <button id="${
-                  admin[i].id
-                }" class="btn btn-success btn-update update">Update</button>
-                <button id="${
-                  admin[i].id
-                }" class="btn btn-danger btn-delete delete">Delete</button>
+                <button id="${admin[i].id}" class="btn btn-success btn-update update">Update</button>
+                <button id="${admin[i].id}" class="btn btn-danger btn-delete delete">Delete</button>
                 </td>
           </tr>
 
@@ -76,7 +57,7 @@ form.onsubmit = function (e) {
     quantity: form.quantity.value,
   };
   admin.push(adminSubmit);
-  localStorage.setItem("dataMen", JSON.stringify(admin));
+  localStorage.setItem("dataMX", JSON.stringify(admin));
   renderoder();
 };
 
@@ -84,11 +65,12 @@ form.onsubmit = function (e) {
  * xóa sản phẩm
  */
 
+
 /**
  *  update sản phẩm
  */
 
-let updateIndex;
+let updateIndex = undefined;
 
 tbody.onclick = function (e) {
   if (e.target.classList.contains("delete")) {
@@ -103,28 +85,25 @@ tbody.onclick = function (e) {
     }
     admin.splice(check, 1);
     renderoder();
-    localStorage.setItem("dataMen", JSON.stringify(admin));
+    localStorage.setItem("dataMX", JSON.stringify(admin)); 
   }
   if (e.target.classList.contains("update")) {
-    console.log("hello");
-    let updateId = +e.target.id;
-    console.log(updateId);
+    // console.log("hello");
+    let updateId = e.target.id;
+    // console.log(updateId);
+    let thay_doi = e.target.parentElement.parentElement;
     let findIndex = -1;
     for (let i = 0; i < admin.length; i++) {
-      if (admin[i].id == updateId) {
+      if (admin[i].id === Number(updateId)) {
         findIndex = i;
-        break;
       }
     }
-    if (findIndex > -1) {
-      // debugger;
-      let thayDoi = e.target.parentElement.parentElement;
-
+    if (findIndex !== -1) {
       updateIndex = findIndex;
       let find = admin[findIndex];
       console.log(find);
-      console.log(thayDoi);
-      thayDoi.innerHTML = `<tr id="${find.id}">
+      thay_doi.innerHTML = `
+        <tr id="${find.id}">
                 <th scope="row">${updateIndex + 1}</th>
                 <td><input class="form-control" type="text"></td>
                 <td><img src="${find.src1}" alt=""</td>
@@ -142,7 +121,6 @@ tbody.onclick = function (e) {
         </tr>
         `;
     }
-    // console.log(thay_doi);
   }
   if (e.target.classList.contains("confirm")) {
     let name =
@@ -170,3 +148,22 @@ tbody.onclick = function (e) {
   }
   renderoder();
 };
+
+let log_out = document.querySelector("#log_out");
+console.log("log out");
+log_out.onclick = function () {
+    console.log("log_out");
+    for (let i = 0; i < nameCustom.length; i++) {
+    nameCustom[i].status = false;
+}
+    localStorage.setItem("listCustomers", JSON.stringify(nameCustom));
+    console.log(nameCustom);
+    log_out.children[0].setAttribute("href", "../LOGIN/index.html");
+};
+
+for (let i = 0; i < nameCustom.length; i++) {
+    if ( nameCustom[i].status === true ) {
+        account.innerHTML = `<a href="../HISTORY/index.html"><i class="fa-solid fa-user"></i> ${nameCustom[i].name}</a>`;
+        console.log(account.innerHTML);
+    }
+}

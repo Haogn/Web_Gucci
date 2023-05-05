@@ -1,5 +1,37 @@
 let product;
 
+let nameCustom = JSON.parse(localStorage.getItem("listCustomers"));
+console.log(nameCustom);
+
+let account = document.querySelector("#account");
+let log_out = document.querySelector("#log_out");
+console.log("log out");
+/**
+ * doi ten theo ten tai khoarn
+ * them san pham mua vao tung gio hang rieng
+ */
+let cartCustomer;
+let cart;
+
+log_out.onclick = function () {
+  console.log("log_out");
+  for (let i = 0; i < nameCustom.length; i++) {
+    nameCustom[i].status = false;
+  }
+  localStorage.setItem("listCustomers", JSON.stringify(nameCustom));
+  console.log(nameCustom);
+  log_out.children[0].setAttribute("href", "../LOGIN/index.html");
+};
+
+for (let i = 0; i < nameCustom.length; i++) {
+  if (nameCustom[i].status === true) {
+    account.innerHTML = `<a href="../HISTORY/index.html"><i class="fa-solid fa-user"></i> ${nameCustom[i].name}</a>`;
+    console.log(account.innerHTML);
+    cart = nameCustom[i].cartCustomers;
+  }
+}
+console.log(cart);
+
 let data2 = localStorage.getItem("dataMen");
 if (data2) {
   product = JSON.parse(data2);
@@ -111,23 +143,20 @@ let tbody = document.querySelector("#tbody");
 
 let dataMenlocal = JSON.parse(localStorage.getItem("dataMen"));
 
-let cart = [];
-
-// console.log(listProduct);
-
+let heart = document.querySelectorAll(".heart")
 function renderProduct() {
   listProduct.innerHTML = "";
   for (let i = 0; i < product.length; i++) {
     listProduct.innerHTML =
       listProduct.innerHTML +
-      `<div class="img-product" id="${product[i].id}" data-bs-toggle="modal" data-bs-target="#exampleModal${product[i].id}">
+      `<div class="img-product " id="${product[i].id}" data-bs-toggle="modal" data-bs-target="#exampleModal${product[i].id}">
           <div class="img">
             <img src=${product[i].src1} alt="">
-            <i class="fa-regular fa-heart"></i>
+            <i class="fa-regular fa-heart heart"></i>
           </div>
           <div class="carousel">
             <img src=${product[i].src2} alt="">
-            <i class="fa-regular fa-heart"></i>
+            <i class="fa-regular fa-heart heart"></i>
           </div>
           <div class="modal fade" id="exampleModal${product[i].id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -170,8 +199,6 @@ function renderProduct() {
 }
 renderProduct();
 
-
-
 /**
  * khi nhấn dis like
  */
@@ -195,22 +222,38 @@ tbody.onclick = function (e) {
 // let boxLike = document.createElement
 listProduct.onclick = function (event) {
   // khi thuc hien mua
-  if ( event.target.classList.contains("buy")) {
-    let buyId = Number(event.target.parentElement.id) ;
+  if (event.target.classList.contains("buy")) {
+    let buyId = Number(event.target.parentElement.id);
     console.log(buyId);
-    for ( let i = 0 ; i < product.length ; i++) {
-      if(buyId === product[i].id) {
-        product[i].count += 1 ; 
-        console.log(product[i].count);
-        cart.push(product[i]);
-        console.log("cart",cart);
-        localStorage.setItem("cart", JSON.stringify(cart))
+    for (let i = 0; i < product.length; i++) {
+      if (buyId === product[i].id) {
+        if (cart.length > 0) {
+          let isCheck = -1;
+          for (let j = 0; j < cart.length; j++) {
+            if (buyId === cart[j].id) {
+              isCheck = j;
+              break;
+            }
+          }
+          if (isCheck > -1) {
+            cart[isCheck].count += 1;
+          } else {
+            cart.push({ ...product[i], count: 1 });
+          }
+        } else {
+          cart.push({ ...product[i], count: 1 });
+        }
+        // product[i].count += 1;
+        // console.log(product[i].count);
+        // cart.push(product[i]);
+        // console.log("cart", cart);
+        localStorage.setItem("listCustomers", JSON.stringify(nameCustom));
       }
     }
     localStorage.setItem("dataMen", JSON.stringify(product));
-    console.log("product",product);
+    console.log("product", product);
   }
-//khi thuc hien like 
+  //khi thuc hien like
   if (event.target.classList.contains("like")) {
     let likeId = Number(event.target.id);
     console.log(likeId);
@@ -245,7 +288,6 @@ listProduct.onclick = function (event) {
   tbody.innerHTML = html.join("");
 };
 
-
 function renderLike() {
   let newLike = product.filter((e) => {
     return e.like > 0;
@@ -269,4 +311,3 @@ function renderLike() {
   tbody.innerHTML = html.join("");
 }
 renderLike();
-

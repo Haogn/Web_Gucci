@@ -1,4 +1,31 @@
 let product;
+let cart;
+
+
+let nameCustom = JSON.parse(localStorage.getItem("listCustomers"));
+console.log(nameCustom);
+
+let account = document.querySelector("#account");
+
+let log_out = document.querySelector("#log_out");
+console.log("log out");
+log_out.onclick = function () {
+    console.log("log_out");
+    for (let i = 0; i < nameCustom.length; i++) {
+    nameCustom[i].status = false;
+}
+    localStorage.setItem("listCustomers", JSON.stringify(nameCustom));
+    console.log(nameCustom);
+    log_out.children[0].setAttribute("href", "../LOGIN/index.html");
+};
+
+for (let i = 0; i < nameCustom.length; i++) {
+    if ( nameCustom[i].status === true ) {
+        account.innerHTML = `<a href="../HISTORY/index.html"><i class="fa-solid fa-user"></i> ${nameCustom[i].name}</a>`;
+        console.log(account.innerHTML);
+        cart = nameCustom[i].cartCustomers ; 
+    }
+}
 
 let data = localStorage.getItem("dataMX");
 if (data) {
@@ -6,7 +33,7 @@ if (data) {
 } else {
   product = [
     {
-      id: 1,
+      id: 9,
       src1: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1678151820/682302_Z8AWR_2184_001_100_0000_Light-GG-canvas-jacket-with-Web-belt.jpg",
       src2: "https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1678152736/682302_Z8AWR_2184_005_100_0000_Light-GG-canvas-jacket-with-Web-belt.jpg",
       src3: "https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1678152733/682302_Z8AWR_2184_002_100_0000_Light-GG-canvas-jacket-with-Web-belt.jpg",
@@ -17,7 +44,7 @@ if (data) {
       quantity: 200,
     },
     {
-      id: 2,
+      id: 10,
       src1: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1632938413/681034_Z8AV6_2184_001_100_0000_Light-GG-canvas-jacket-with-leather-trim.jpg",
       src2: "https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1632938413/681034_Z8AV6_2184_002_100_0000_Light-GG-canvas-jacket-with-leather-trim.jpg",
       src3: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1632938413/681034_Z8AV6_2184_004_100_0000_Light-GG-canvas-jacket-with-leather-trim.jpg",
@@ -28,7 +55,7 @@ if (data) {
       quantity: 200,
     },
     {
-      id: 3,
+      id: 11,
       src1: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1625848204/610488_XKA5U_9751_001_100_0000_Light-GG-wool-cape.jpg",
       src2: "https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1625848204/610488_XKA5U_9751_002_100_0000_Light-GG-wool-cape.jpg",
       src3: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1625848204/610488_XKA5U_9751_004_100_0000_Light-GG-wool-cape.jpg",
@@ -39,7 +66,7 @@ if (data) {
       quantity: 200,
     },
     {
-      id: 4,
+      id: 12,
       src1: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1678234594/734911_Z8BEI_2184_001_100_0000_Light-Reversible-GG-cotton-bomber-jacket.jpg",
       src2: "https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1678234598/734911_Z8BEI_2184_002_100_0000_Light-Reversible-GG-cotton-bomber-jacket.jpg",
       src3: "https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1678234603/734911_Z8BEI_2184_005_100_0000_Light-Reversible-GG-cotton-bomber-jacket.jpg",
@@ -50,7 +77,7 @@ if (data) {
       quantity: 200,
     },
     {
-      id: 5,
+      id: 13,
       src1: "https://media.gucci.com/style/HEXD6D7D2_Center_0_0_800x800/1679355050/742855_XDCEY_1168_001_100_0000_Light-Cotton-canvas-and-GG-Supreme-jacket.jpg",
       src2: "https://media.gucci.com/style/HEXD6D7D2_Center_0_0_800x800/1679113912/742855_XDCEY_1168_002_100_0000_Light-Cotton-canvas-and-GG-Supreme-jacket.jpg",
       src3: "https://media.gucci.com/style/HEXD6D7D2_Center_0_0_800x800/1679113914/742855_XDCEY_1168_003_100_0000_Light-Cotton-canvas-and-GG-Supreme-jacket.jpg",
@@ -61,7 +88,7 @@ if (data) {
       quantity: 200,
     },
     {
-      id: 6,
+      id: 14,
       src1: "https://media.gucci.com/style/HEXD6D7D2_Center_0_0_800x800/1679113116/742596_XDCEY_1168_001_100_0000_Light-Cotton-canvas-pant-with-GG-inserts.jpg",
       src2: "https://media.gucci.com/style/HEXD6D7D2_Center_0_0_800x800/1679113118/742596_XDCEY_1168_002_100_0000_Light-Cotton-canvas-pant-with-GG-inserts.jpg",
       src3: "https://media.gucci.com/style/HEXD6D7D2_Center_0_0_800x800/1679113121/742596_XDCEY_1168_003_100_0000_Light-Cotton-canvas-pant-with-GG-inserts.jpg",
@@ -72,7 +99,7 @@ if (data) {
       quantity: 200,
     },
     {
-      id: 7,
+      id: 15,
       src1: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1678211104/729935_XDCE9_4759_001_100_0000_Light-Reversible-denim-jacket.jpg",
       src2: "https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1678211124/729935_XDCE9_4759_004_100_0000_Light-Reversible-denim-jacket.jpg",
       src3: "https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1678211120/729935_XDCE9_4759_002_100_0000_Light-Reversible-denim-jacket.jpg",
@@ -83,7 +110,7 @@ if (data) {
       quantity: 200,
     },
     {
-      id: 8,
+      id: 16,
       src1: "https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1678299303/737640_XDCFG_4759_001_100_0000_Light-Reversible-denim-shorts.jpg",
       src2: "https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1678299314/737640_XDCFG_4759_004_100_0000_Light-Reversible-denim-shorts.jpg",
       src3: "https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1678299308/737640_XDCFG_4759_002_100_0000_Light-Reversible-denim-shorts.jpg",
@@ -156,8 +183,14 @@ renderProduct();
 localStorage.setItem("dataMX", JSON.stringify(product));
 
 let tbody = document.querySelector("#tbody");
-
-let cart = [];
+// let dataFemale = localStorage.getItem("cart");
+// console.log(dataFemale);
+// let cart;
+// if (dataFemale) {
+//   cart = JSON.parse(dataFemale);
+// } else {
+//   cart = [];
+// }
 
 listProduct.onclick = function (e) {
   //khi thuc hien mua
@@ -167,11 +200,27 @@ listProduct.onclick = function (e) {
     console.log(buyId);
     for (let i = 0; i < product.length; i++) {
       if (buyId === product[i].id) {
-        product[i].count += 1;
-        console.log(product[i].count);
-        cart.push(product[i]);
-        console.log(cart);
-        localStorage.setItem("cart", JSON.stringify(cart));
+        if (cart.length > 0) {
+          let isCheck = -1;
+          for (let j = 0; j < cart.length; j++) {
+            if (buyId === cart[j].id) {
+              isCheck = j;
+              break;
+            }
+          }
+          if (isCheck > -1) {
+            cart[isCheck].count += 1;
+          } else {
+            cart.push({ ...product[i], count: 1 });
+          }
+        } else {
+          cart.push({ ...product[i], count: 1 });
+        }
+        // product[i].count += 1;
+        // console.log(product[i].count);
+        // cart.push(product[i]);
+        // console.log(cart);
+        localStorage.setItem("listCustomers", JSON.stringify(nameCustom));
       }
     }
     localStorage.setItem("dataMX", JSON.stringify(product));
@@ -256,3 +305,6 @@ tbody.onclick = function (e) {
     renderLike();
   }
 };
+
+
+

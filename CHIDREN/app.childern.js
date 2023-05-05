@@ -124,20 +124,160 @@ function renderProduct() {
               </div>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-primary like">Like </button>
-                <button>
-                    <p>Subscribe</p>
+                <button id="${product[i].id}" type="button" class="btn btn-primary like">Like </button>
+                <button id="${product[i].id}">
+                    <p class="buy" >Buy</p>
                     <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
                     </svg>
                 </button>
                 </div>
               </div>
-            </div> 
+            </div>
           </div>
         </div>`;
   }
 }
 renderProduct();
 
-// localStorage
+let nameCustom = JSON.parse(localStorage.getItem("listCustomers"));
+console.log(nameCustom);
+let cart ; 
+let account = document.querySelector("#account");
+let log_out = document.querySelector("#log_out");
+console.log("log out");
+log_out.onclick = function () {
+    console.log("log_out");
+    for (let i = 0; i < nameCustom.length; i++) {
+    nameCustom[i].status = false;
+}
+    localStorage.setItem("listCustomers", JSON.stringify(nameCustom));
+    console.log(nameCustom);
+    log_out.children[0].setAttribute("href", "../LOGIN/index.html");
+};
+
+for (let i = 0; i < nameCustom.length; i++) {
+    if ( nameCustom[i].status === true ) {
+        account.innerHTML = `<a href="../HISTORY/index.html"><i class="fa-solid fa-user"></i> ${nameCustom[i].name}</a>`;
+        console.log(account.innerHTML);
+        cart = nameCustom[i].cartCustomers;
+
+    }
+}
+
+/**
+ * khi nhấn dis like
+ */
+let tbody = document.querySelector("#tbody");
+
+tbody.onclick = function (e) {
+  if (e.target.classList.contains("btn_dislike")) {
+    let dislikeId = Number(e.target.parentElement.parentElement.id);
+    // console.log(Number(dislikeId));
+    for (let i = 0; i < product.length; i++) {
+      if (dislikeId === product[i].id) {
+        product[i].like *= 0;
+      }
+    }
+    renderLike();
+  }
+};
+
+/**
+ *  khi nhấn like tang len 1
+ * truy van box like
+ */
+// let boxLike = document.createElement
+listProduct.onclick = function (event) {
+  // khi thuc hien mua
+  if (event.target.classList.contains("buy")) {
+    let buyId = Number(event.target.parentElement.id);
+    console.log(buyId);
+    for (let i = 0; i < product.length; i++) {
+      if (buyId === product[i].id) {
+        if (cart.length > 0) {
+          let isCheck = -1;
+          for (let j = 0; j < cart.length; j++) {
+            if (buyId === cart[j].id) {
+              isCheck = j;
+              break;
+            }
+          }
+          if (isCheck > -1) {
+            cart[isCheck].count += 1;
+          } else {
+            cart.push({ ...product[i], count: 1 });
+          }
+        } else {
+          cart.push({ ...product[i], count: 1 });
+        }
+        // product[i].count += 1;
+        // console.log(product[i].count);
+        // cart.push(product[i]);
+        // console.log("cart", cart);
+        localStorage.setItem("listCustomers", JSON.stringify(nameCustom));
+      }
+    }
+    localStorage.setItem("dataChidren", JSON.stringify(product));
+    console.log("product", product);
+  }
+  //khi thuc hien like
+  if (event.target.classList.contains("like")) {
+    let likeId = Number(event.target.id);
+    console.log(likeId);
+    for (i = 0; i < product.length; i++) {
+      if (likeId === product[i].id) {
+        product[i].like += 1;
+      }
+    }
+    // console.log(product);
+    renderLike();
+    localStorage.setItem("dataChidren", JSON.stringify(product));
+  }
+  let newLike = product.filter((e) => {
+    return e.like > 0;
+  });
+  let html = newLike.map((e, i) => {
+    return `
+                    <tr id="${e.id}">
+                        <th scope="row">${i + 1}</th>
+                        <td>${e.name}</td>
+                        <td><img src="${e.src1}" alt=""></td>
+                        <td><span>${e.price}</span>$</td>
+                        <td> <span>${
+                          Math.floor(Math.random() * 100) + 10
+                        }</span> </td>
+                        <td>
+                          <button class="btn_dislike" >Dis Like</button>
+                        </td>
+                    </tr>
+    `;
+  });
+  tbody.innerHTML = html.join("");
+};
+
+function renderLike() {
+  let newLike = product.filter((e) => {
+    return e.like > 0;
+  });
+  let html = newLike.map((e, i) => {
+    return `
+                    <tr id="${e.id}">
+                        <th scope="row">${i + 1}</th>
+                        <td>${e.name}</td>
+                        <td><img src="${e.src1}" alt=""></td>
+                        <td><span>${e.price}</span>$</td>
+                        <td> <span>${
+                          Math.floor(Math.random() * 100) + 10
+                        }</span> </td>
+                        <td>
+                          <button class="btn_dislike" >Dis Like</button>
+                        </td>
+                    </tr>
+    `;
+  });
+  tbody.innerHTML = html.join("");
+}
+renderLike();
+
+

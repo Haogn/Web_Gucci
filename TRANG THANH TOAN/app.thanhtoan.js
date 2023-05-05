@@ -1,25 +1,51 @@
 // let cart = localStorage.getItem("dataMen");
-let cart = localStorage.getItem("cart");
-if (cart) {
-  cart = JSON.parse(cart);
-} else {
-  cart = [];
+let cart ; 
+let historys ; 
+let nam = JSON.parse(localStorage.getItem("dataMen")); 
+let nu = JSON.parse(localStorage.getItem("dataMX")) ; 
+
+let nameCustom = JSON.parse(localStorage.getItem("listCustomers"));
+// console.log(nameCustom);
+
+let account = document.querySelector("#account");
+let log_out = document.querySelector("#log_out");
+
+log_out.onclick = function () {
+    // console.log("log_out");
+    for (let i = 0; i < nameCustom.length; i++) {
+    nameCustom[i].status = false;
 }
+    localStorage.setItem("listCustomers", JSON.stringify(nameCustom));
+    log_out.children[0].setAttribute("href", "../LOGIN/index.html");
+};
+
+for (let i = 0; i < nameCustom.length; i++) {
+    if ( nameCustom[i].status === true ) {
+        account.innerHTML = `<a href="../HISTORY/index.html"><i class="fa-solid fa-user"></i> ${nameCustom[i].name}</a>`;
+        // console.log(account.innerHTML);
+        cart = nameCustom[i].cartCustomers;
+        historys = nameCustom[i].historys; 
+    }
+}
+console.log("cart",cart);
+
 let tbody = document.getElementById("tbody");
 
 let money = document.getElementById("money");
+
+let btn_pay = document.getElementById("btn_pay");
 
 let pay = document.getElementById("input_money");
 
 let endPay = document.getElementById("endpay");
 
-let historys;
-let dataHis = localStorage.getItem("historys");
-if (dataHis) {
-  historys = JSON.parse(dataHis);
-} else {
-  historys = [];
-}
+// let historys;
+// let dataHis = localStorage.getItem("historys");
+// if (dataHis) {
+//   historys = JSON.parse(dataHis);
+// } else {
+//   historys = [];
+// }
 
 let phone = document.querySelector("#number_phone");
 
@@ -71,9 +97,10 @@ sumName();
 // tong conut
 function sumCount() {
   let sumCount = 0;
-  for (let i = 0; i < cart.length; i++) {
+  for( let i = 0 ; i < cart.length ; i++ ) {
     sumCount += Number(cart[i].count) ;
   }
+  
   console.log("tong count", sumCount);
   return sumCount;
 }
@@ -89,45 +116,66 @@ function compar() {
   return sum;
 }
 // console.log(compar());
+btn_pay.onclick = function ()  {
+  pay.value = `${compar()} $`; 
+}
+
 endPay.onclick = function () {
-  if (+pay.value === compar()) {
-    let newHistory = {
-      id: historys.length + 1,
-      productsName: sumName(),
-      address: address.value,
-      bill: compar(),
-      phone: phone.value,
-      count: sumCount(),
-    };
-    historys.push(newHistory);
-    console.log(historys);
-
-    localStorage.setItem("historys", JSON.stringify(historys));
-
-    //  console.log("hello");
-    swal("Thanks!", "Thanh toán thành công", "success");
-    for (i = 0; i < cart.length; i++) {
-      cart[i].count = 0;
-    }
-    localStorage.setItem("cart", JSON.stringify(cart));
-    renderCart();
-  } else if (+pay.value < compar()) {
+  if ( phone.value === "" || address.value === "") {
     swal({
-      title: "Lỗi thanh toán",
-      text: "Vui lòng nhập lại số tiền cần thanh toán ",
-      icon: "warning",
-    });
-    localStorage.setItem("cart", JSON.stringify(cart));
-    renderCart(); 
+            title: "Lỗi thanh toán",
+            text: "Vui lòng nhập đủ địa chỉ và số điện thoại ",
+            icon: "warning",
+          }); 
   } else {
-    swal("Thanks!", `Thanh toán thành công và tips ${+pay.value - compar()}$ cho nhân niên bán hàng`, "success");
-    for (i = 0; i < cart.length; i++) {
-      cart[i].count = 0;
-    }
-    localStorage.setItem("cart", JSON.stringify(cart));
-    renderCart();
+    let newHistory = {
+          id: historys.length + 1,
+          productsName: sumName(),
+          address: address.value,
+          bill: compar(),
+          phone: phone.value,
+          count: sumCount(),
+        };
+        historys.push(newHistory);
+        console.log(historys);
+    
+        localStorage.setItem("listCustomers", JSON.stringify(nameCustom));
+    
+        //  console.log("hello");
+        swal("Thanks!", "Thanh toán thành công", "success");
+        cart.length = 0 ; 
+        localStorage.setItem("listCustomers", JSON.stringify(nameCustom));
+        renderCart();
   }
-};
+}
+// {
+//   if (+pay.value === compar() ) {
+//     let newHistory = {
+//       id: historys.length + 1,
+//       productsName: sumName(),
+//       address: address.value,
+//       bill: compar(),
+//       phone: phone.value,
+//       count: sumCount(),
+//     };
+//     historys.push(newHistory);
+//     console.log(historys);
+
+//     localStorage.setItem("listCustomers", JSON.stringify(nameCustom));
+
+//     //  console.log("hello");
+//     swal("Thanks!", "Thanh toán thành công", "success");
+//     cart.length = 0 ; 
+//     localStorage.setItem("listCustomers", JSON.stringify(nameCustom));
+//     renderCart();
+//   } else  {
+//     swal({
+//       title: "Lỗi thanh toán",
+//       text: "Vui lòng nhập lại số tiền cần thanh toán ",
+//       icon: "warning",
+//     }); 
+//   } 
+// };
 
 /**
  *
@@ -162,5 +210,8 @@ tbody.onclick = function (e) {
   }
   renderCart();
 };
+
+
+
 
 
